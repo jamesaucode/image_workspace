@@ -10,18 +10,27 @@
   <script src="./scr.js"></script>
   <body id="body">
     <div id="test">
-      <div id="left" class="left-tab">
-      </div>
+      <div id="left" class="left-tab"></div>
       <div class="main">
-      <h1>Image workspace</h1>
-      <div id="dogPhoto"></div>
-      <label for="file-upload" class="custom-file-upload">
-        Upload Image
-      </label>
-      <input id="file-upload" type="file" onchange="previewFile()" multiple/>
-      <div id="upload" onchange="previewFile()">
+        <div class="margin-bottom-20px">
+          <h1>Image workspace</h1>
+          <div id="dogPhoto"></div>
+          <label for="file-upload" class="custom-file-upload">
+            Upload Image
+          </label>
+          <button onclick="reOrganize()" class="custom-file-upload">
+            Re-organize
+          </button>
+          <!-- This will be hidden, only style the label! -->
+          <input
+            id="file-upload"
+            type="file"
+            onchange="previewFile()"
+            multiple
+          />
+        </div>
+        <div id="upload" onchange="previewFile()"></div>
       </div>
-    </div>
     </div>
   </body>
 </html>

@@ -1,0 +1,50 @@
+body {
+    text-align: center;
+}
+
+.upload-btn {
+    border: 0;
+    border-radius: 0;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+    padding: 1em;
+    color: white;
+    background-color: rgb(92, 92, 252);
+}
+
+.custom-file-upload:hover {
+    cursor: pointer;
+}
+
+#test {
+    height: 100%;
+    width: 100%;
+}
+
+#doggo {
+    position: absolute;
+}
+
+#upload {
+    height: 1000px;
+    width: 1000px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 3em;
+    font-family: 'Arial';
+}
+
+button {
+    border-radius: 0;
+    border: 0;
+    padding: 1em;
+    margin-bottom: 1em;
+    background: #eeeeee;
+}

@@ -1,5 +1,11 @@
 body {
     text-align: center;
+    font-family: 'Arial';
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 .upload-btn {
@@ -22,8 +28,30 @@ input[type="file"] {
 }
 
 #test {
+    display:flex;
     height: 100%;
     width: 100%;
+}
+
+.left-tab {
+    background-color: rgb(61, 61, 61);
+    color: white;
+    font-weight: 700;
+    width: 10%;
+    height: 100%;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+}
+
+.left-tab > p:hover {
+    cursor: pointer;
+}
+
+.main {
+    width: 90%;
 }
 
 #doggo {
@@ -31,14 +59,14 @@ input[type="file"] {
 }
 
 #upload {
-    height: 1000px;
-    width: 1000px;
+    /* height: 1000px;
+    width: 1000px; */
     margin: 0 auto;
 }
 
 h1 {
     font-size: 3em;
-    font-family: 'Arial';
+    margin: 20px 0;
 }
 
 button {

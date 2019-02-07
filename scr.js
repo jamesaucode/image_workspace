@@ -7,28 +7,9 @@ window.onresize = function() {
   var HEIGHT = window.innerHeight;
   div.style.width = WIDTH + "px";
   div.style.height = HEIGHT + "px";
-};
-
-function startDrag(e) {
-  var targ = e.target;
-  console.log(e);
-  if (!targ.style.top) {
-    targ.style.top = "0px";
-  }
-  if (!targ.style.left) {
-    targ.style.left = "0px";
-  }
-  drag = true;
-  console.log("Dragging");
-  var deltaX = e.movementX;
-  var deltaY = e.movementY;
-  console.log(deltaX);
-  console.log(deltaY);
-  return false;
 }
 
 var isDown = false;
-var stopTime = 1500;
 
 function previewFile() {
   var preview = document.getElementById("upload"); //selects the query named img
@@ -43,12 +24,24 @@ function previewFile() {
       "load",
       function() {
         var image = new Image();
-        var defaultHeight =   window.innerHeight / 2;
-        var defaultWidth = window.innerWidth / 4;
+        var leftTab = document.getElementById('left');
+        var fileNameParagraph = document.createElement('p');
+        var defaultHeight = 400;
+        var defaultWidth = 400;
         image.style.position = 'absolute';
+        image.style.border = '10px solid transparent';
         image.width = defaultWidth;
         image.height = defaultHeight;
         image.title = file.name;
+        var fileName = document.createTextNode(file.name);
+        fileNameParagraph.addEventListener('mouseover', function() {
+          image.style.border = '10px solid #42f48c';
+        });
+        fileNameParagraph.addEventListener('mouseout', function () {
+          image.style.border = '10px solid transparent';
+        })
+        fileNameParagraph.append(fileName);
+        leftTab.append(fileNameParagraph);
         image.src = this.result;
         image.addEventListener(
           "mousedown",

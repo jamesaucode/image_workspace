@@ -65,7 +65,6 @@ function previewFile() {
           function(e) {
             e.preventDefault();
             if (isDown) {
-              image.style.zIndex = 100;
               image.style.left = e.clientX - image.width / 2 + "px";
               image.style.top = e.clientY - image.height / 2 + "px";
               console.log("dragging");
@@ -73,6 +72,12 @@ function previewFile() {
           },
           true
         );
+        image.addEventListener("mouseover", function() {
+          image.style.zIndex = 100;
+        })
+        image.addEventListener("mouseout", function() {
+          image.style.zIndex = 1;
+        })
         preview.appendChild(image);
       },
       false

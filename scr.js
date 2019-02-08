@@ -87,12 +87,6 @@ function makeImage(reader, preview, file) {
   // var defaultHeight = main.clientHeight;
   // Default width is the main workspace's width divided by 4 (aka can fit 4 images)
   var defaultWidth = main.clientWidth / 4;
-  var resizers = document.createElement('div');
-  var resizer = document.createElement('div');
-  // resizers.className = 'resizers';
-  // resizer.className = 'resizer top-right';
-  // resizers.appendChild(resizer);
-  // upload.appendChild(resizers);
   image.className = 'image'
   image.width = defaultWidth;
   // image.height = defaultHeight;

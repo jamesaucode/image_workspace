@@ -1,0 +1,23 @@
+{
+  "name": "image_workspace",
+  "version": "1.0.0",
+  "description": "Simple website for artists to paste reference images",
+  "main": "scr.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "node": "node-sass style/style.scss style/style.css -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jamesaucode/image_workspace.git"
+  },
+  "author": "James Au",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jamesaucode/image_workspace/issues"
+  },
+  "homepage": "https://github.com/jamesaucode/image_workspace#readme",
+  "dependencies": {
+    "node-sass": "^4.11.0"
+  }
+}

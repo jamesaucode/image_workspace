@@ -1,11 +1,5 @@
-window.onload = function() {};
-
-window.onresize = function() {
-  var main = document.querySelector(".main");
-};
-
 var isDown = false; // global state to check if an image is being dragged or not;
-var images = []; // Array to store all image in images
+var images = []; // Array to store all image in images, used in reOrganize function
 
 function reOrganize() {
   var offsetLeft = 0;
@@ -58,6 +52,8 @@ function appendLeftTab(file, image) {
   // Add onclick event to the delete button
   delBtn.onclick = e => {
     var target = document.getElementById(image.id);
+    // Update the local images array for the re-organize function
+    images = images.filter(img => img.id !== image.id);
     // e.target is the button, to get to the paragraph, we have to get e.target.parentNode
     leftTab.removeChild(e.target.parentNode);
     // Next, we remove the target image
@@ -78,21 +74,38 @@ function appendLeftTab(file, image) {
   leftTab.append(fileNameParagraph);
 }
 
+
+
+function resize() {
+
+}
+
 function makeImage(reader, preview, file) {
   var image = new Image();
-  var defaultHeight = 400;
-  var defaultWidth = 400;
-  image.style.position = "absolute";
-  image.style.border = "10px solid transparent";
+  var main = document.querySelector(".main");
+  var upload = document.getElementById('upload');
+  // var defaultHeight = main.clientHeight;
+  // Default width is the main workspace's width divided by 4 (aka can fit 4 images)
+  var defaultWidth = main.clientWidth / 4;
+  var resizers = document.createElement('div');
+  var resizer = document.createElement('div');
+  // resizers.className = 'resizers';
+  // resizer.className = 'resizer top-right';
+  // resizers.appendChild(resizer);
+  // upload.appendChild(resizers);
+  image.className = 'image'
   image.width = defaultWidth;
-  image.height = defaultHeight;
+  // image.height = defaultHeight;
   image.title = file.name;
+  // The resulting file data
   image.src = reader.result;
   image.addEventListener(
     "mousedown",
     function(e) {
       // Click to start dragging, click again to stop
       isDown = !isDown;
+      console.log(e.pageX);
+      console.log(e.pageY);
     },
     true
   );

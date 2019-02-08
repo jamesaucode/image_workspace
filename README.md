@@ -1,1 +1,2 @@
 A simple website for artists/designers to upload multiple reference images to work on their projects.
+The project is in pure Javascript without any framework because I wanted to test my skill in javascript and also to learn more about DOM manipulation.

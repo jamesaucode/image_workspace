@@ -52,27 +52,31 @@ input[type="file"] {
   position: absolute;
   width: 20px;
   height: 20px;
-  border-radius: 50%;
-  /*magic to turn square into circle*/
   background: transparent; }
-  .resizers .resizer:hover {
-    cursor: nwse-resize; }
 
 .top-right {
   top: 0px;
   right: 0px; }
+  .top-right:hover {
+    cursor: nesw-resize; }
 
 .top-left {
   top: 0px;
   left: 0px; }
+  .top-left:hover {
+    cursor: nwse-resize; }
 
 .bottom-right {
   bottom: 0px;
   right: 0px; }
+  .bottom-right:hover {
+    cursor: nwse-resize; }
 
 .bottom-left {
   bottom: 0px;
   left: 0px; }
+  .bottom-left:hover {
+    cursor: nesw-resize; }
 
 .left-tab {
   background-color: #4b4b4b;
@@ -131,3 +135,9 @@ button {
 .wrapper-image > img {
   height: 100%;
   width: 100%; }
+
+.grabbing {
+  cursor: grabbing; }
+
+.hover-grab {
+  cursor: grab; }

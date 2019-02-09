@@ -20,7 +20,7 @@ function appendLeftTab(file, imageWrapper) {
   delBtn.textContent = "X";
   delBtn.className = "btn--del";
   // Add onclick event to the delete button
-  delBtn.onclick = (e) => {
+  delBtn.onclick = e => {
     const target = imageWrapper;
     // Update the local images array for the re-organize function
     images = images.filter(
@@ -33,6 +33,8 @@ function appendLeftTab(file, imageWrapper) {
   };
   const fileNameParagraph = document.createElement("p");
   const fileName = document.createTextNode(file.name);
+  // var imageHeight = document.createTextNode(imageWrapper.style.height + " ");
+  // var imageWidth = document.createTextNode(imageWrapper.style.width);
   fileNameParagraph.addEventListener("mouseover", function() {
     imageWrapper.style.border = "10px solid #42f48c";
     imageWrapper.style.zIndex = 100;
@@ -44,6 +46,8 @@ function appendLeftTab(file, imageWrapper) {
   fileNameParagraph.append(fileName);
   fileNameParagraph.append(delBtn);
   leftTab.append(fileNameParagraph);
+  leftTab.append(imageHeight);
+  leftTab.append(imageWidth);
 }
 
 function createResizer(resizer, imageWrapper, resizeFunction) {
@@ -124,7 +128,7 @@ function stopResize(e) {
 function makeImage(reader, preview, file) {
   const image = new Image();
   const imageWrapper = document.createElement("div");
-  imageWrapper.className = "wrapper-image";
+  imageWrapper.className = "wrapper-image hover-grab";
   const main = document.querySelector(".main");
   const upload = document.getElementById("upload");
   // Default width is the main workspace's width divided by 4 (aka can fit 4 images)
@@ -163,6 +167,8 @@ function makeImage(reader, preview, file) {
     "mousedown",
     function(e) {
       // Click to start dragging, click again to stop
+      imageWrapper.classList.remove('hover-grab');
+      imageWrapper.classList.add("grabbing");
       isDown = true;
     },
     true
@@ -191,6 +197,8 @@ function makeImage(reader, preview, file) {
     "mouseup",
     function(e) {
       // Click to start dragging, click again to stop
+      imageWrapper.classList.remove("grabbing");
+      imageWrapper.classList.add('hover-grab');
       isDown = false;
     },
     true
@@ -224,7 +232,7 @@ function previewFile() {
       reader.addEventListener(
         "load",
         function() {
-          var imageWrapper = makeImage(reader, preview, file);
+          const imageWrapper = makeImage(reader, preview, file);
           appendLeftTab(file, imageWrapper);
         },
         false

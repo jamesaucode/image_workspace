@@ -65,32 +65,41 @@ input[type="file"] {
   position: absolute;
   width: 20px;
   height: 20px;
-  border-radius: 50%; /*magic to turn square into circle*/
   background: transparent;
+}
+
+.top-right {
+  top: 0px;
+  right: 0px;
+
+  &:hover {
+    cursor: nesw-resize;
+  }
+}
+
+.top-left {
+  top: 0px;
+  left: 0px;
 
   &:hover {
     cursor: nwse-resize;
   }
 }
 
-.top-right {
-  top: 0px;
-  right: 0px;
-}
-
-.top-left {
-  top: 0px;
-  left: 0px;
-}
-
 .bottom-right {
   bottom: 0px;
   right: 0px;
+  &:hover {
+    cursor: nwse-resize;
+  }
 }
 
 .bottom-left {
   bottom: 0px;
   left: 0px;
+  &:hover {
+    cursor: nesw-resize;
+  }
 }
 
 .left-tab {
@@ -131,7 +140,7 @@ input[type="file"] {
 }
 
 #upload {
-  height: calc(100% - 80px);    
+  height: calc(100% - 80px);
   background: rgb(228, 228, 253);
   margin: 0 auto;
 }
@@ -155,10 +164,21 @@ button {
   border: 10px solid transparent;
   position: absolute;
   box-sizing: content-box;
+
+  &:hover {
+    // cursor: grab;
+  }
 }
 
 .wrapper-image > img {
-  // min-height: 400px;
   height: 100%;
   width: 100%;
+}
+
+.grabbing {
+  cursor: grabbing;
+}
+
+.hover-grab {
+  cursor: grab; 
 }

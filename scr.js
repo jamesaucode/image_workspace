@@ -117,14 +117,6 @@ function topRightResize(e) {
 
 function stopResize(e) {
   isResizing = false;
-  currentTarget = null;
-  currentResizer = null;
-  initialWidth = null;
-  initialHeight = null;
-  initialMouseX = null;
-  initialMouseY = null;
-  initialX = null;
-  initialY = null;
   window.removeEventListener("mousemove", bottomRightResize);
   window.removeEventListener("mousemove", bottomLeftResize);
 }

@@ -19,9 +19,10 @@ TODO:
 
 5. Fix the problem of left side bar not extending with the body height.
 
-6. Implement a function so that images can be resized (ideally by dragging the edge of an image)
-    - Wrap the image around with a div
-    - Add 4 different resizers on the div
-    - to be continued..
+6. Implement a function so that images can be resized (ideally by dragging the edge of an image) *
+    - Wrap the image around with a div *
+    - Add 4 different resizers on the div *
+
+7. Function to rotate an image.
 
 * = Done

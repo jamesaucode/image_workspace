@@ -54,7 +54,7 @@ input[type="file"] {
   height: 20px;
   border-radius: 50%;
   /*magic to turn square into circle*/
-  background: white; }
+  background: transparent; }
   .resizers .resizer:hover {
     cursor: nwse-resize; }
 

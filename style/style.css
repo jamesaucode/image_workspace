@@ -1,11 +1,12 @@
 * {
   box-sizing: border-box;
-  font-family: "Arial"; }
+  font-family: "Arial";
+  padding: 0;
+  margin: 0; }
 
 body {
   text-align: center;
-  height: 100%;
-  min-height: 100vh;
+  height: 100vh;
   width: 100vw;
   margin: 0;
   padding: 0;
@@ -39,7 +40,7 @@ input[type="file"] {
 
 #test {
   display: flex;
-  min-height: 100vh;
+  height: 1000px;
   width: 100%; }
 
 .resizers {
@@ -47,12 +48,11 @@ input[type="file"] {
   height: 100%;
   width: 100%;
   background: transparent; }
-
-.resizers .resizer {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  background: transparent; }
+  .resizers .resizer {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: transparent; }
 
 .top-right {
   top: 0px;
@@ -83,8 +83,8 @@ input[type="file"] {
   color: white;
   font-weight: 700;
   width: 10%;
-  min-height: 100vh;
-  padding: 1em;
+  height: 100%;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -92,25 +92,23 @@ input[type="file"] {
 
 .left-tab > p {
   display: flex;
+  margin: 5px;
   justify-content: space-between;
   align-items: center;
   width: 100%; }
-
-.left-tab > p:hover {
-  cursor: pointer; }
+  .left-tab > p:hover {
+    cursor: pointer; }
 
 .main {
+  height: 100%;
   width: 90%; }
 
-#doggo {
-  position: absolute; }
-
-.margin-bottom-20px {
+.header {
   margin-bottom: 20px;
   height: 80px; }
 
 #upload {
-  height: calc(100% - 80px);
+  height: calc(100% - 100px);
   background: #e4e4fd;
   margin: 0 auto; }
 

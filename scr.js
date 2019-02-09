@@ -50,7 +50,7 @@ function appendLeftTab(file, imageWrapper) {
   leftTab.append(imageWidth);
 }
 
-function createResizer(resizer, imageWrapper, resizeFunction) {
+function addEventListenerToResizer(resizer, imageWrapper, resizeFunction) {
   resizer.addEventListener("mousedown", e => {
     e.preventDefault();
     isDown = false;
@@ -144,14 +144,17 @@ function makeImage(reader, preview, file) {
   topRightResizer.className = "resizer top-right";
   bottomLeftResizer.className = "resizer bottom-left";
   bottomRightResizer.className = "resizer bottom-right";
-  createResizer(bottomRightResizer, imageWrapper, bottomRightResize);
-  createResizer(bottomLeftResizer, imageWrapper, bottomLeftResize);
-  createResizer(topRightResizer, imageWrapper, topRightResize);
-  createResizer(topLeftResizer, imageWrapper, topLeftResize);
+  // (resizer, imagewrapper, function for resize)
+  addEventListenerToResizer(bottomRightResizer, imageWrapper, bottomRightResize);
+  addEventListenerToResizer(bottomLeftResizer, imageWrapper, bottomLeftResize);
+  addEventListenerToResizer(topRightResizer, imageWrapper, topRightResize);
+  addEventListenerToResizer(topLeftResizer, imageWrapper, topLeftResize);
+  // Add all 4 resizer to the resizers div
   resizers.appendChild(topLeftResizer);
   resizers.appendChild(topRightResizer);
   resizers.appendChild(bottomLeftResizer);
   resizers.appendChild(bottomRightResizer);
+  // Then, add the resizers to the imagewrapper
   imageWrapper.append(resizers);
   image.className = "image";
   resizers.width = defaultWidth;
@@ -166,7 +169,7 @@ function makeImage(reader, preview, file) {
   imageWrapper.addEventListener(
     "mousedown",
     function(e) {
-      // Click to start dragging, click again to stop
+      // when an image is dragged, the cursor changes to hovering
       imageWrapper.classList.remove('hover-grab');
       imageWrapper.classList.add("grabbing");
       isDown = true;
@@ -187,6 +190,7 @@ function makeImage(reader, preview, file) {
       e.preventDefault();
       if (isDown) {
         imageWrapper.style.height = image.height + "px";
+        // e.clientX - image.width / 2 so the cursor will be in the center of the cursor.
         imageWrapper.style.left = e.clientX - image.width / 2 + "px";
         imageWrapper.style.top = e.clientY - image.height / 2 + "px";
       }
@@ -196,16 +200,18 @@ function makeImage(reader, preview, file) {
   imageWrapper.addEventListener(
     "mouseup",
     function(e) {
-      // Click to start dragging, click again to stop
+      // When the image is not being dragged, the cursor becomes a normal grab
       imageWrapper.classList.remove("grabbing");
       imageWrapper.classList.add('hover-grab');
       isDown = false;
     },
     true
   );
+  // Image pops out when they are being moused over
   imageWrapper.addEventListener("mouseover", function() {
     imageWrapper.style.zIndex = 100;
   });
+  // Reset the zindex of the image when they are not being moused over
   imageWrapper.addEventListener("mouseout", function() {
     imageWrapper.style.zIndex = 1;
   });
@@ -216,7 +222,8 @@ function makeImage(reader, preview, file) {
   // Add the whole imageWrapper div into the preview div
   preview.appendChild(imageWrapper);
   // Add image wrapper into the local images array
-  images.unshift(imageWrapper);
+  images.push(imageWrapper);
+  // Return an imagewrapper so that previewFile() can use it as a variable
   return imageWrapper;
 }
 
@@ -252,9 +259,8 @@ function reOrganize() {
   images.forEach(imageWrapper => {
     // Left tab is 10% of vw + it's padding
     let left = window.innerWidth * 0.1 - 10;
-    // Top is height of the margin-bottom-20px div
+    // Top is height of the header
     let top = 100;
-    console.log(imageWrapper);
     // Increment offset each time an image is added, so that images will not overlap
     imageWrapper.style.left = left + offsetLeft + "px";
     imageWrapper.style.top = top + offsetTop + "px";
